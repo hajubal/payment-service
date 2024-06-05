@@ -1,0 +1,8 @@
+spring:
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/payment
+    username: root
+    password: 1234
+
+  thymeleaf:
+    cache: false
