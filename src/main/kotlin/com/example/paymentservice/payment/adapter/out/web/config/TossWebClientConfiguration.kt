@@ -19,11 +19,11 @@ class TossWebClientConfiguration(
 
     @Bean
     fun tossPaymentWebClient(): WebClient {
-        val encodedSecretKey = Base64.getEncoder().encodeToString((secretKey + ":").toByteArray())
+        val encodedSecretKey = Base64.getEncoder().encodeToString("$secretKey:".toByteArray())
 
         return WebClient.builder()
             .baseUrl(baseUrl)
-            .defaultHeader(HttpHeaders.AUTHORIZATION, "Basic: $encodedSecretKey")
+            .defaultHeader(HttpHeaders.AUTHORIZATION, "Basic $encodedSecretKey")
             .defaultHeader(HttpHeaders.CONTENT_TYPE, "application/json")
             .clientConnector(reactorClientHttpConnector())
             .codecs { it.defaultCodecs() }
