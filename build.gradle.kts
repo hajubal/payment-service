@@ -36,6 +36,8 @@ dependencies {
 
     implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
 
+    implementation("io.netty:netty-resolver-dns-native-macos:4.1.85.Final:osx-aarch_64")
+
     runtimeOnly("com.mysql:mysql-connector-j")
     runtimeOnly("io.asyncer:r2dbc-mysql")
 
