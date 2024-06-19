@@ -1,3 +1,7 @@
+DROP TABLE payment_order_histories;
+DROP TABLE payment_orders;
+DROP TABLE payment_events;
+
 CREATE TABLE payment_events (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     buyer_id BIGINT NOT NULL,
