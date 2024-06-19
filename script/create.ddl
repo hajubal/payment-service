@@ -8,12 +8,12 @@ CREATE TABLE payment_events (
     is_payment_done BOOLEAN NOT NULL DEFAULT FALSE,
     payment_key VARCHAR(255) UNIQUE,
     order_id VARCHAR(255) UNIQUE,
-    type ENUM('GENERAL', 'AUTOMATIC') NOT NULL,
+    type ENUM('NORMAL') NOT NULL,
     order_name VARCHAR(255) NOT NULL,
-    method ENUM('CARD', 'EASY', 'MOBILE'),
+    method ENUM('EASY'),
     psp_raw_data JSON,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     approved_at DATETIME
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE payment_orders (
     payment_event_id BIGINT NOT NULL,
     seller_id BIGINT NOT NULL,
     product_id BIGINT NOT NULL,
-    order_id VARCHAR(255) UNIQUE NOT NULL,
+    order_id VARCHAR(255) NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
     payment_order_status ENUM('NOT_STARTED', 'EXECUTING', 'SUCCESS', 'FAILED') NOT NULL DEFAULT 'NOT_STARTED',
     ledger_updated BOOLEAN NOT NULL DEFAULT FALSE,
